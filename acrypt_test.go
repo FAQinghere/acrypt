@@ -4,7 +4,6 @@ package acrypt
 
 import (
 	"fmt"
-	"log"
 	"testing"
 )
 
@@ -261,7 +260,7 @@ func ExampleHash() {
 	pwd := "secret"
 	hash, err := Hash(pwd)
 	if err != nil {
-		log.Print(err)
+		fmt.Print(err)
 	}
 	fmt.Println(hash)
 }
@@ -270,10 +269,10 @@ func ExampleVerify() {
 	pwd := "secret"
 	hash, err := Hash(pwd)
 	if err != nil {
-		log.Print(err)
+		fmt.Print(err)
 	}
 	if Verify(hash, pwd) {
-		log.Println("the password is good")
+		fmt.Println("the password is good")
 	}
 }
 
@@ -281,18 +280,19 @@ func ExampleGenerateFromPassword() {
 	pwd := []byte("secret")
 	hash, err := GenerateFromPassword(pwd, DefaultConfig)
 	if err != nil {
-		log.Print(err)
+		fmt.Print(err)
 	}
-	fmt.Println(hash)
+	fmt.Println(string(hash))
 }
 
 func ExampleCompareHashAndPassword() {
 	pwd := []byte("secret")
 	hash, err := GenerateFromPassword(pwd, DefaultConfig)
 	if err != nil {
-		log.Print(err)
+		fmt.Print(err)
 	}
 	if CompareHashAndPassword(hash, pwd) == nil {
-		log.Println("the password is good")
+		fmt.Println("the password is good")
 	}
+	// Output: the password is good
 }
