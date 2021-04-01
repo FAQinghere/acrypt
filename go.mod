@@ -1,4 +1,4 @@
-module acrypt
+module github.com/faqinghere/acrypt
 
 go 1.16
 
